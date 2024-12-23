@@ -39,7 +39,7 @@ create_date DATE
 );
 
 -- Tao bang GroupAccount
-DROP TABLE group_account;
+DROP TABLE IF EXISTS group_account;
 CREATE TABLE group_account(
 group_id INT,
 account_id INT,
@@ -47,32 +47,32 @@ join_date DATE
 );
 
 -- Tao bang TypeQuestion
-DROP TABLE type_question;
+DROP TABLE IF EXISTS type_question;
 CREATE TABLE type_question(
 type_id INT,
 type_name ENUM("Essay","Multiple-Choice")
 );
 
 -- Tao bang CategoryQuestion
-DROP TABLE category_question;
+DROP TABLE IF EXISTS category_question;
 CREATE TABLE category_question(
 category_id INT,
-category_name ENUM("Java",".NET","SQL","Postman","Ruby","...")
+category_name VARCHAR(50)
 );
 
 -- Tao bang Question
-DROP TABLE question;
+DROP TABLE IF EXISTS question;
 CREATE TABLE question(
 question_id INT,
 content VARCHAR(50),
 category_id INT,
 type_id INT,
-Creator_id INT,
+creator_id INT,
 create_date DATE
 );
 
 -- Tao bang answer
-DROP TABLE answer;
+DROP TABLE IF EXISTS answer;
 CREATE TABLE answer(
 answer_id INT,
 content VARCHAR(50),
@@ -81,19 +81,19 @@ is_correct BOOLEAN
 );
 
 -- Tao bang Exam
-DROP TABLE exam;
+DROP TABLE IF EXISTS exam;
 CREATE TABLE exam(
 exam_id INT,
-`code` INT UNSIGNED,
+code CHAR(10),
 title VARCHAR(50),
 category_id INT,
-duration TIME,
+duration INT,
 creator_id INT,
 create_date DATE
 );
 
 -- Tao bang ExamQuestion
-DROP TABLE exam_question;
+DROP TABLE IF EXISTS exam_question;
 CREATE TABLE exam_question(
 exam_id INT,
 question_id INT
